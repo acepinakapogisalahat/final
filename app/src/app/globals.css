@@ -1,0 +1,346 @@
+@import "tailwindcss";
+
+/* ---------- Base ---------- */
+body {
+  background: #f8fafc;
+  color: #0f172a;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Buttons ---------- */
+.btn,
+.btn-primary,
+.btn-secondary,
+.btn-ghost,
+.btn-danger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  border-radius: 0.75rem;
+  border: none;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn:disabled,
+.btn-primary:disabled,
+.btn-secondary:disabled,
+.btn-ghost:disabled,
+.btn-danger:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: #2563eb;
+  color: #ffffff;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.08);
+}
+.btn-primary:hover { background: #1d4ed8; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); }
+.btn-primary:active { background: #1e40af; }
+
+.btn-secondary {
+  background: #ffffff;
+  color: #334155;
+  border: 1px solid #cbd5e1;
+}
+.btn-secondary:hover { border-color: #94a3b8; background: #f8fafc; }
+
+.btn-ghost { background: transparent; color: #475569; }
+.btn-ghost:hover { background: #f1f5f9; color: #0f172a; }
+
+.btn-danger { background: #dc2626; color: #ffffff; }
+.btn-danger:hover { background: #b91c1c; }
+
+/* ---------- Cards ---------- */
+.card,
+.card-hover {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
+}
+.card-hover { transition: box-shadow 0.2s ease, border-color 0.2s ease; }
+.card-hover:hover {
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  border-color: #cbd5e1;
+}
+
+/* ---------- Inputs ---------- */
+.input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgb(59 130 246 / 0.25);
+}
+
+/* ---------- Badges ---------- */
+.badge,
+.badge-blue,
+.badge-green,
+.badge-amber,
+.badge-red,
+.badge-slate {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.625rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+.badge-blue { background: #eff6ff; color: #1d4ed8; }
+.badge-green { background: #ecfdf5; color: #047857; }
+.badge-amber { background: #fffbeb; color: #b45309; }
+.badge-red { background: #fef2f2; color: #b91c1c; }
+.badge-slate { background: #f1f5f9; color: #475569; }
+
+/* ---------- Utilities ---------- */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in { animation: fadeIn 0.3s ease-out; }
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-slide-up { animation: slideUp 0.4s ease-out; }
+
+/* ---------- Animations ---------- */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes bounce-sm {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.3s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-bounce-sm {
+  animation: bounce-sm 2s ease-in-out infinite;
+}
+
+/* Shimmer for skeletons - much better than plain pulse */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    #f1f5f9 0%,
+    #e2e8f0 40%,
+    #f1f5f9 80%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.8s ease-in-out infinite;
+}
+
+/* Stagger delays for lists */
+.delay-0 { animation-delay: 0ms; }
+.delay-1 { animation-delay: 75ms; }
+.delay-2 { animation-delay: 150ms; }
+.delay-3 { animation-delay: 225ms; }
+.delay-4 { animation-delay: 300ms; }
+.delay-5 { animation-delay: 375ms; }
+.delay-6 { animation-delay: 450ms; }
+.delay-7 { animation-delay: 525ms; }
+
+/* Elements start invisible and animate in */
+.animate-once {
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+/* Button press feedback */
+.btn-press {
+  transition: transform 0.1s ease, box-shadow 0.2s ease;
+}
+.btn-press:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+/* Card lift on hover */
+.card-lift {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s ease,
+              border-color 0.3s ease;
+}
+.card-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.08),
+              0 8px 10px -6px rgb(0 0 0 / 0.04);
+}
+
+/* Image zoom on card hover */
+.img-zoom {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.group:hover .img-zoom {
+  transform: scale(1.08);
+}
+
+/* Gradient text glow */
+.text-glow {
+  text-shadow: 0 0 20px rgb(37 99 235 / 0.3);
+}
+
+/* Page-level entrance */
+.page-enter {
+  animation: fadeIn 0.4s ease-out;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in-up,
+  .animate-fade-in,
+  .animate-slide-up,
+  .animate-scale-in,
+  .animate-float,
+  .animate-bounce-sm {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  .shimmer {
+    animation: none;
+    background: #f1f5f9;
+  }
+}
+
+/* Blob animation */
+@keyframes blob {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* Fade in animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-in {
+  animation: fade-in 0.6s ease-out forwards;
+}
+
+.fade-in {
+  animation: fade-in 0.6s ease-out forwards;
+}
+
+.slide-in-from-bottom-4 {
+  animation: fade-in 0.7s ease-out forwards;
+}
+
+/* Duration utilities */
+.duration-500 {
+  animation-duration: 500ms;
+}
+
+.duration-700 {
+  animation-duration: 700ms;
+}
+
+.duration-1000 {
+  animation-duration: 1000ms;
+}
+/* ── Text containment: wrap unbreakable strings instead of letting them stretch/overflow ──
+   (long URLs, pasted blobs, test data). overflow-wrap: anywhere only activates when a word
+   would overflow its line box, so normal prose rendering is unchanged; it also shrinks the
+   min-content size, which fixes the same blowout inside flex/grid children. */
+/* break-word (NOT anywhere): breaks an overlong word only when it would overflow its box —
+   which is exactly the listing-description case — while PRESERVING min-content size, so
+   flex/grid chrome (tabs, nav pills, badges) never shrinks below a word and never mid-wraps.
+   `anywhere` collapses min-content to 1 char and caused the "Disco/ver" tab split. */
+p, h1, h2, h3, h4, h5, h6, span, dd, dt, li, blockquote, td, th, a, button, label {
+  overflow-wrap: break-word;
+}
+
+/* Belt: any element that already truncates (truncate/line-clamp) keeps its behavior —
+   this rule only adds wrapping for elements that DON'T truncate. No existing class is overridden. */
